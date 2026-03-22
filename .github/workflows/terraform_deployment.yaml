@@ -10,5 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Hello
-        run: echo "Hello"
+
+      - name: first step
+        run: |
+          ls -al
+          echo '######################'
+          pwd
+          echo '######################'        
+
+      - name: second step
+        uses: actions/checkout@v4
+
+      - name: debug step
+        run: |
+          terraform --version || true
+
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: "1.14.4"
+
+      - name: debug step
+        run: |
+          terraform --version
+
+        
