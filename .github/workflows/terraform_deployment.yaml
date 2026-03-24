@@ -37,16 +37,30 @@ jobs:
       #     #terraform apply
       #     #upload the TFstate
 
-      - name: creating-random-file
-        run: |
-          cd terraform
-          ls -al
-          echo 'this is a test!' > test.txt
-          ls -al
-          pwd
-
-      - name: upload-artifact
-        uses: actions/upload-artifact@v7
+      - name: download-artifact
+        uses: actions/download-artifact@v8
         with: 
           name: terraform-state
-          path: terraform/test.txt
+
+
+      - name: creating-random-file
+        run: |
+          ls -al
+          pwd
+          cat test.txt
+          
+
+
+      # - name: creating-random-file
+      #   run: |
+      #     cd terraform
+      #     ls -al
+      #     echo 'this is a test!' > test.txt
+      #     ls -al
+      #     pwd
+
+      # - name: upload-artifact
+      #   uses: actions/upload-artifact@v7
+      #   with: 
+      #     name: terraform-state
+      #     path: terraform/test.txt
