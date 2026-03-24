@@ -10,17 +10,9 @@ jobs:
   echo_hello_world:
     runs-on: ubuntu-latest
     steps:
-      - name: debug
-        run: |
-          pwd
-          ls
-
       - name: Check code
         uses: actions/checkout@v4
 
-      - name: debug
-        run: |
-          pwd
       # - name: debug-step
       #   continue-on-error: true
       #   run: |
@@ -42,17 +34,23 @@ jobs:
       #     #terraform apply
       #     #upload the TFstate
 
-      - name: creating-random-file
+      # - name: creating-random-file
+      #   run: |
+      #     cd terraform
+      #     ls -al
+      #     echo 'this is a test!' > test.txt
+      #     ls -al
+      #     pwd
+
+      - name: env-var
         run: |
-          cd terraform
-          ls -al
-          echo 'this is a test!' > test.txt
-          ls -al
-          pwd
+          AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }}
+          echo '*****************'
+          echo $AWS_ACCESS_KEY_ID
 
       - name: debug
         run: |
-          pwd
+          echo $AWS_ACCESS_KEY_ID
 
       # - name: upload-artifact
       #   uses: actions/upload-artifact@v7
