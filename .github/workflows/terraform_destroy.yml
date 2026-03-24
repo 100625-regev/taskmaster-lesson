@@ -30,7 +30,7 @@ jobs:
 
           cd terraform
           terraform init
-          terraform destroy
+          terraform destroy --auto-approve
 
       - name: upload-artifact
         uses: actions/upload-artifact@v7
