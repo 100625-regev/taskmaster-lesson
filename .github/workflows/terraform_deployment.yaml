@@ -13,21 +13,41 @@ jobs:
       - name: Check code
         uses: actions/checkout@v4
         
-      - name: debug-step
-        continue-on-error: true
-        run: |
-          terraform --version 
+      # - name: debug-step
+      #   continue-on-error: true
+      #   run: |
+      #     terraform --version 
 
-      - uses: hashicorp/setup-terraform@v4
-        with:
-          terraform_version: "1.14.4"
+      # - uses: hashicorp/setup-terraform@v4
+      #   with:
+      #     terraform_version: "1.14.4"
         
-      - name: terraform-init-plan 
-        run: |
-          export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }}
-          export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS }}
-          export AWS_REGION=us-east-1
+      # - name: terraform-init-plan 
+      #   run: |
+      #     export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }}
+      #     export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS }}
+      #     export AWS_REGION=us-east-1
+      #     # download the TFstate
+      #     cd terraform
+      #     terraform init
+      #     terraform plan
+      #     #terraform apply
+      #     #upload the TFstate
 
+      - name: creating-random-file
+        run: |
           cd terraform
-          terraform init
-          terraform plan
+          ls -al
+          echo 'this is a test!' > test.txt
+          ls -al
+          pwd
+
+      - name: debug
+        run: |
+          pwd
+
+      # - name: upload-artifact
+      #   uses: actions/upload-artifact@v7
+      #   with: 
+      #     name: terraform-state
+      #     path: test.txt
