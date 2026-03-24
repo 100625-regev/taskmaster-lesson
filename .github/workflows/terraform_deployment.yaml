@@ -38,7 +38,7 @@ jobs:
       #     #upload the TFstate
 
       - name: download-artifact
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with: 
           name: terraform-state
 
