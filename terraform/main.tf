@@ -148,3 +148,4 @@ resource "aws_instance" "main" {
     Name = "${var.project_name}-server"
   }
 }
+
