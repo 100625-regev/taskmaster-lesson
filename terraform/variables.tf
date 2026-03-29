@@ -16,7 +16,7 @@ variable "vpc_cidr" {
   default     = "10.1.0.0/16"
 }
 
-variable "subnet_cidrs" {
+variable "subnet_cidr" {
   description = "CIDR block for public subnet"
   type        = string
   default     = "10.1.1.0/24"
@@ -25,7 +25,7 @@ variable "subnet_cidrs" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t3.small"
+  default     = "t3.micro"
 
   validation {
     condition     = contains(["t3.micro", "t3.small"], var.instance_type)
