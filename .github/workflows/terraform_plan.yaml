@@ -19,12 +19,12 @@ jobs:
         with:
           terraform_version: "1.14.4"
 
-      - name: download-artifact
-        uses: dawidd6/action-download-artifact@v19
-        with: 
-          name: terraform-state
-          path: terraform
-          workflow: terraform_deployment.yaml
+      # - name: download-artifact
+      #   uses: dawidd6/action-download-artifact@v19
+      #   with: 
+      #     name: terraform-state
+      #     path: terraform
+      #     workflow: terraform_deployment.yaml
       
       # - name: TF Plan
       #   run: |
